@@ -9,6 +9,12 @@
 - include_tasks: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
+- include_tasks: setup-Rocky.yml
+  when: ansible_os_family == 'Rocky'
+
+- include_tasks: setup-AlmaLinux.yml
+  when: ansible_os_family == 'AlmaLinux'
+
 - include_tasks: initialize.yml
 - include_tasks: configure.yml
 
@@ -18,6 +24,7 @@
     state: "{{ postgresql_service_state }}"
     enabled: "{{ postgresql_service_enabled }}"
 
+- import_tasks: databases.yml
 # Configure PostgreSQL.
 - import_tasks: users.yml
-- import_tasks: databases.yml
+
