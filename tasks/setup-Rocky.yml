@@ -1,4 +1,6 @@
 ---
+- debug:
+    msg: "{{ postgresql_packages }}"
 - name: Ensure PostgreSQL packages are installed.
   yum:
     name: "{{ postgresql_packages }}"
